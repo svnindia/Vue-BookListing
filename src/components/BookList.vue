@@ -2,17 +2,17 @@
   <div>
     <h1>{{title}}</h1>
     <ul>
-      <li v-for="book in books">
-        <book-item book="book"></book-item>
-      </li>
+        <book-item v-for="book in books" :book="book" :key="book.title"></book-item>
     </ul>
   </div>
-
-
 </template>
 <script>
+  import BookItem from './BookItem';
   export default {
     name:"BookList",
+    components:{
+      BookItem
+    },
     data:function(){
       return {
         title:"All Books",
