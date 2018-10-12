@@ -2,10 +2,10 @@
   <div>
       <h1>{{title}}</h1>
       <ul>
-        <book-item v-for="book in books" :book="book"></book-item> 
+        <book-item v-for="book in books" v-bind:book="book"></book-item> 
       </ul>
       <hr>
-      <book-form @addBook="append"></book-form>
+      <book-form v-on:addBook="append"></book-form>
   </div>
 </template>
 
