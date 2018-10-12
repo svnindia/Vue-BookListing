@@ -6,7 +6,7 @@ const esquery = require('esquery');
 const esprima = require('esprima');
 
 describe('BookForm.vue', () => {
-  it('should contain a data function that returns bookTitle and bookAuthor @book-form-contains-data', () => {
+  it('should contain a methods call to bookSubmit @book-form-emits-add-book', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookForm.vue'), 'utf8');
@@ -16,22 +16,18 @@ describe('BookForm.vue', () => {
     const document = parse5.parseFragment(file.replace(/\n/g, ''), { locationInfo: true });
     const nodes = document.childNodes;
     const script = nodes.filter(node => node.nodeName === 'script');
-
     if (script.length == 0) {
       assert(false, "We either didn't find a script tag, or any code in a script tag in the BookForm component.")
     }
 
     const ast = esprima.parse(script[0].childNodes[0].value, { sourceType: 'module' });
-    const data = esquery(ast, 'Property[key.name=data]');
-    assert(data.length > 0, 'The BookList\'s `data()` method\'s return is not present');
+    const methods = esquery(ast, 'Property[key.name=methods]');
+    assert(methods.length > 0, 'The BookForm\'s `methods` declaration is not present');
 
-    let results = esquery(data[0], 'Property[key.name=bookTitle] > .value[value=""]');
-    assert(results.length > 0, 'The BookList\'s `bookTitle` property is not defined with value of `\'\'`');
+    let results = esquery(methods[0], 'Identifier[name="bookSubmit"]');
+    assert(results.length > 0, 'The BookForm\'s `methods` object is not defining a `bookSubmit()` method');
 
-    results = esquery(data[0], 'Property[key.name=bookAuthor] > .value[value=""]');
-    assert(results.length > 0, 'The BookList\'s `bookAuthor` property is not defined with value of `\'\'`');
-
-    results = esquery(data[0], 'Property[key.name=price] > .value[value=""]');
-    assert(results.length > 0, 'The BookList\'s `price` property is not defined with value of `\'\'`');
+    results = esquery(methods[0], 'CallExpression[arguments] > Literal[value="addBook"]');
+    assert(results.length > 0, 'The `bookSubmit()` method is emitting a call to `addBook`');
   });
 });

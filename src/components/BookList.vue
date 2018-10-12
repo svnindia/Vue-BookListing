@@ -18,10 +18,11 @@ export default {
     BookItem,
     BookForm
   },
+
   methods:{
-    appendBook(bookTitle,bookAuthor){
-      console.log(bookTitle,bookAuthor);
-      this.books.push({title:bookTitle,author:bookAuthor})
+    appendBook(bookTitle,bookAuthor,price){
+      console.log(bookTitle,bookAuthor,price);
+      this.books.push({title:bookTitle,author:bookAuthor,price:price})
     }
   },
   data() {
@@ -33,7 +34,7 @@ export default {
         { title: "Amusing Ourselves to Death", author: "Neil Postman" }
       ]
     };
-  },
+  }
 
 };
 </script>
