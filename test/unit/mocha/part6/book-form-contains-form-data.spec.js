@@ -8,7 +8,7 @@ const { JSDOM } = jsdom;
 
 
 describe('BookForm.vue', () => {
-  it('should contain a form with submit call to bookSubmit @book-list-will-contain-submit-with-prevent-and-method-call', () => {
+  it('should a form @book-list-will-contain-form', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookForm.vue'), 'utf8');
@@ -32,24 +32,9 @@ describe('BookForm.vue', () => {
 
     // Test for for form existance
     const results = document.querySelector('form');
-
-    assert(results != null, 'The BookForm template does not contain a `form` tag');
-    assert(results.length > 0, 'The BookForm template does not contain a `form` tag');
-
-    if (results.outerHTML.includes('@submit.prevent')) {
-
-    } else if (results.outerHTML.includes('submit.prevent')) {
-      if (results.outerHTML.includes(' :submit.prevent')) {
-        assert(false, 'You need to add the submit event with the `v-on` tag.');
-      }
-    } else {
-      assert(results.outerHTML.includes('submit.prevent'), 'The `form` tag in the BookForm template does not include `v-on` with `submit.prevent` modifier.');
+    if (results == null) {
+      assert(false, "The BookForm template does not contain a `form` tag.")
     }
-
-    //let re = /bookSubmit\(bookTitle\s*\,\s*bookAuthor\)/
-    let re = /bookSubmit\(bookTitle\s*\,\s*bookAuthor\s*\,\s*price\)/
-    let match = results.outerHTML.match(re)
-    assert(match != null && match.length == 1, 'The `v-on` with `submit.prevent` modifier called in BookForm\'s `form` tag does not call the `bookSubmit()` method');
-
+    assert(results.length > 0, 'The BookForm template does not contain a `form` tag');
   });
 });

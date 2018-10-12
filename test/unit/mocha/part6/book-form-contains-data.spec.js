@@ -6,7 +6,7 @@ const esquery = require('esquery');
 const esprima = require('esprima');
 
 describe('BookForm.vue', () => {
-  it('should contain a data function that returns bookTitle and bookAuthor @book-form-contains-data', () => {
+  it('should contain a data function that returns bookTitle ,bookAuthor and Price @book-form-contains-data', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/components/BookForm.vue'), 'utf8');
