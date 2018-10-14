@@ -30,5 +30,8 @@ describe('BookForm.vue', () => {
 
     results = esquery(data[0], 'Property[key.name=bookAuthor] > .value[value=""]');
     assert(results.length > 0, 'The BookList\'s `bookAuthor` property is not defined with value of `\'\'`');
+
+    results = esquery(data[0], 'Property[key.name=bookPrice] > .value[value=""]');
+    assert(results.length > 0, 'The BookList\'s `bookPrice` property is not defined with value of `\'\'`');
   });
 });

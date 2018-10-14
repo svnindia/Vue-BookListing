@@ -41,5 +41,8 @@ describe('BookList.vue', () => {
 
     results = esquery(methods[0], 'CallExpression > ObjectExpression > Property[key.name="author"][value.name="bookAuthor"]');
     assert(results.length > 0, 'In BookList\'s `appendBook()` method call, the `author` key is not sending the `bookAuthor` argument');
+
+    results = esquery(methods[0], 'CallExpression > ObjectExpression > Property[key.name="price"][value.name="bookPrice"]');
+    assert(results.length > 0, 'In BookList\'s `appendBook()` method call, the `author` key is not sending the `bookPrice` argument');
   });
 });

@@ -38,5 +38,7 @@ describe('BookForm.vue', () => {
     assert(results.innerHTML.includes('v-model="bookTitle"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookTitle`');
 
     assert(results.innerHTML.includes('v-model="bookAuthor"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookAuthor`');
+
+    assert(results.innerHTML.includes('v-model="bookPrice"'), 'The BookForm template does not have an input with a `v-model` attribute for `bookPrice`');
   });
 });

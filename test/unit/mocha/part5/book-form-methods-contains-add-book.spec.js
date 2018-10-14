@@ -32,5 +32,8 @@ describe('BookForm.vue', () => {
 
     results = esquery(methods[0], 'Property[key.name="bookSubmit"] > FunctionExpression > Identifier[name="bookAuthor"]');
     assert(results.length > 0, '`bookAuthor` is not an argument in the call to `bookSubmit()`');
+
+    results = esquery(methods[0], 'Property[key.name="bookSubmit"] > FunctionExpression > Identifier[name="bookPrice"]');
+    assert(results.length > 0, '`bookPrice` is not an argument in the call to `bookSubmit()`');
   });
 });

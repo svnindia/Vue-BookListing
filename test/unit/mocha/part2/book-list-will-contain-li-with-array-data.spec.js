@@ -36,9 +36,9 @@ describe('BookList.vue', () => {
       assert(true);
     } else {
       assert(results.innerHTML.includes('li'), 'The BookList template does not contain any `li` tags');
-      let re = /\{\{\s*book\.title\s*\}\}\s*\:\s*\{\{\s*book\.author\s*\}\}/
+      let re = /\{\{\s*book\.title\s*\}\}\s*\:\s*\{\{\s*book\.author\s*\}\}\s*\:\s*\{\{\s*book\.price\s*\}\}/
       let match = results.innerHTML.match(re)
-      assert(match != null && match.length == 1, 'The BookList template\'s `li` element does not contain these interpolated values `{{book.title}}\:{{book.author}}`');
+      assert(match != null && match.length == 1, 'The BookList template\'s `li` element does not contain these interpolated values `{{book.title}}\:{{book.author}}\:{{book.price}}`');
     }
   });
 });

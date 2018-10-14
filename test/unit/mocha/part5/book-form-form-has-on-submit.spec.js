@@ -46,7 +46,7 @@ describe('BookForm.vue', () => {
       assert(results.outerHTML.includes('submit.prevent'), 'The `form` tag in the BookForm template does not include `v-on` with `submit.prevent` modifier.');
     }
 
-    let re = /bookSubmit\(bookTitle\s*\,\s*bookAuthor\)/
+    let re = /bookSubmit\(bookTitle\s*\,\s*bookAuthor\,\s*bookPrice\)/
     let match = results.outerHTML.match(re)
     assert(match != null && match.length == 1, 'The `v-on` with `submit.prevent` modifier called in BookForm\'s `form` tag does not call the `bookSubmit()` method');
     
