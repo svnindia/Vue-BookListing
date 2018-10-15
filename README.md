@@ -1,5 +1,6 @@
 # Build a Reading List Application with Vue.js
 
+
 This repo contains the code for the Pluralsight Project "Build a Reading List Application with Vue.js"
 
 This Project was created with Vue 2.5.
