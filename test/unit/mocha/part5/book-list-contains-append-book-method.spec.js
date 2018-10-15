@@ -38,5 +38,8 @@ describe('BookList.vue', () => {
 
     results = esquery(methods[0], 'Property[key.name="appendBook"] > FunctionExpression > Identifier[name="bookAuthor"]');
     assert(results.length > 0, 'The `appendBook()` method is not being called with `bookAuthor` as the first argument');
+
+    results = esquery(methods[0], 'Property[key.name="appendBook"] > FunctionExpression > Identifier[name="bookPrice"]');
+    assert(results.length > 0, 'The `appendBook()` method is not being called with `bookPrice` as the first argument');
   });
 });
