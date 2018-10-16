@@ -25,15 +25,15 @@ export default {
       return {
         title: 'All Books',
         books: [
-        { title: 'Self-Reliance', author: 'Ralph Waldo Emerson'},
-        { title: 'American Gods', author: 'Neil Gaiman'},
-        { title: 'Amusing Ourselves to Death', author: 'Neil Postman'},
+        { title: 'Self-Reliance', author: 'Ralph Waldo Emerson', price: 400},
+        { title: 'American Gods', author: 'Neil Gaiman', price: 500},
+        { title: 'Amusing Ourselves to Death', author: 'Neil Postman', price: 600},
         ]
       }
 	},
 	methods: {
-	  appendBook(bookTitle, bookAuthor){
-	    this.books.push({ title: bookTitle, author: bookAuthor})
+	  appendBook(bookTitle, bookAuthor, bookPrice){
+	    this.books.push({ title: bookTitle, author: bookAuthor, price: bookPrice})
 	  }
 	}
   }
