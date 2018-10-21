@@ -2,17 +2,21 @@
   <div>
     <h1>{{title}}</h1>
     <ul>
-      <book-item v-for='book in books' :book="book"></book-item>
+      <book-item v-for='book in books' :book="book" :key="book.title"></book-item>
     </ul>
+    <hr>
+    <book-form @addBook="appendBook"></book-form>
   </div>
 </template>
 
 <script>
   import BookItem from './bookItem';
+  import BookForm from './bookForm';
   export default {
     name: 'Booklist',
     components : {
-      BookItem
+      BookItem,
+      BookForm
     },
     data(){
       return {
@@ -22,6 +26,11 @@
           {title: "English", author: "David champel"},
           {title: "MAthematics", author: "aryabhatta"},
         ]
+      }
+    },
+    methods: {
+      appendBook(bookTitle, bookAuthor) {
+        this.books.push({title: bookTitle, author: bookAuthor})
       }
     }
   }
