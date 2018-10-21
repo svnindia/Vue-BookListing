@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import bookItem from './bookItem';
+  import BookItem from './bookItem';
   export default {
     name: 'Booklist',
     components : {
