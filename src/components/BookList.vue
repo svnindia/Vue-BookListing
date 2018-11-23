@@ -1,52 +1,51 @@
 <template>
   <div>
-    <h1>
-      {{title}}
-    </h1>
+    <h1>{{title}}</h1>
     <ul>
-      <book-item v-for="book in books" :book="book"></book-item>
+      <book-item v-for="book in books" :book='book'></book-item>
     </ul>
-    <hr>
-    <book-form @addBook="appendBook"></book-form>
+    <book-form @addBook='appendBook'></book-form>
   </div>
-
 </template>
 
 <script>
-  import BookItem from './BookItem.vue'
-  import BookForm from './BookForm.vue'
+
+  import BookItem from './BookItem';
+  import BookForm from './BookForm';
   export default {
-    name: 'BookList',
+    name: "BookList",
     components:{
-        BookItem,
-        BookForm
+      BookItem,
+      BookForm
+    },
+    methods:{
+      appendBook(bookTitle,bookAuthor){
+        console.log(bookTitle,bookAuthor);
+        this.books.push({title:bookTitle,author:bookAuthor})
+      }
     },
     data() {
       return {
-        title: 'All Books',
-        books:[
-          {title:'Let Us C',author:'yashwant Kanetkar'},
-          {title:'Concept of Physics',author:'H C Verma'},
-          {title:'Mathematics By RD Sharma',author:'R D Sharma'}
+        title: "All Books",
+        books: [
+          { title: "Self-Reliance", author: "Ralph Waldo Emerson" },
+          { title: "American Gods", author: "Neil Gaiman" },
+          { title: "Amusing Ourselves to Death", author: "Neil Postman" }
         ]
       };
     },
-    methods:{
-      appendBook(at,au){
-        this.books.push({title:at,author:au});
-      }
-    }
+
   };
 </script>
 
-<style >
-  h1,h2 {
-    font-weight:normal;
+<style>
+  h1,
+  h2 {
+    font-weight: normal;
   }
-
-  ul{
-    list-style-type:none;
-    padding:0
+  ul {
+    list-style-type: none;
+    padding: 0;
   }
 
 </style>

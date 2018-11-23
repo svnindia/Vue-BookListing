@@ -20,8 +20,8 @@
       }
     },
     methods:{
-      bookSubmit(bt,ba){
-          this.$emit('addBook',bt,ba);
+      bookSubmit(bookTitle,bookAuthor){
+          this.$emit('addBook',bookTitle,bookAuthor);
       }
     }
   };
